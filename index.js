@@ -228,16 +228,22 @@ function ConvertiraDolar(){
     p2.innerHTML="";
     
   }
+  else if(isNaN(local) == true){
+    p1.innerText="Debe colocar un Número";
+    p1.style.color="red";
+    local.innerHTML="";
+    p2.innerHTML="";
+
+  }
   else{
     p2.innerText="Su conversión da: "+result+" U$$";
     p1.innerHTML="";
     local.innerHTML="";
   } 
   console.log(result);
- 
-
 }
-ConvertiraDolar();
+
+
 
 
 
