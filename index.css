@@ -10,6 +10,7 @@ header{
     width: 100%;
     background-color: darkred;
     float: left;
+    text-align: center;
 }
 header label{
     font-size: 60px;
@@ -21,20 +22,54 @@ header label{
 main{
     text-align: center;
     width: 100%;
-    background-color: black;
+    background-color: lavenderblush;
     float: left;
+    margin: 0 auto;
 }
 h1{
     color: darkcyan;
-    font-size: 25px;
+    font-size: 35px;
+    margin-top:10px;
     font-family: Arial, Helvetica, sans-serif;
 }
 footer{
     width: 100%;
     float: left;
     text-align: center;
+    background-color: darkred;
+    color: lemonchiffon;
 }
-section{
+.secciones{
     width: 100%;
-    height: 600px;
+    margin-top: 10px;
+    float: left;
+}
+
+.card-body{
+    width: 30%;
+    border: double 5px darkred;
+    float: left;
+    margin: 10px;
+    padding: 5px;
+}
+
+form{
+    width: 50%;
+    margin: 0 auto;    
+    text-align: center;
+    
+    }
+input{
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 7px;
+}
+form label{
+    font-size: 25px;
+    color: rgb(61, 70, 233);
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 3px;
+}
+#last{
+    color: darkred;
 }

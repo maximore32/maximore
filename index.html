@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
     <title>Covertidor</title>
 </head>
@@ -14,7 +15,26 @@
         </header>
         <main>
             <h1>Convierta su moneda local a U$$</h1>
-            <section></section>
+            <form action="">
+                <label id="monelegida" for="">Moneda a convertir</label>
+                <input type="number" id="numselec" placeholder="ingrese monto a convertir..">
+                <input type="button" value="Convertir" onclick="ConvertiraDolar()">
+                <p id="filtro"></p>
+                <p id="resultado"></p>
+            </form>
+            <section class="secciones">
+                <h2><strong>Monedas Disponibles</strong></h2>
+                <article id="art"></article>
+            </section>
+            <section class="secciones">
+                <h2><strong>Monedas Devaluadas</strong></h2>
+                <article id="art2"></article>
+            </section>
+            <section class="secciones">
+                <h3>Ultima moneda convertida: <strong id="last"></strong></h3>
+
+            </section>
+
 
         </main>
         <footer><small>Convert2000</small></footer>
