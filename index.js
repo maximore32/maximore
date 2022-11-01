@@ -120,8 +120,8 @@ class Moneda{
 const listamonedas= [];
 listamonedas.push(new Moneda(1,"ars",300,"peso argentino"));
 listamonedas.push(new Moneda(2,"ves",3000,"peso venezolano"));
-listamonedas.push(new Moneda(3,"clp",0,01,"peso chileno"));
-listamonedas.push(new Moneda(4,"bob",0,14,"peso boliviano"));
+listamonedas.push(new Moneda(3,"clp",0.10,"peso chileno"));
+listamonedas.push(new Moneda(4,"bob",0.14,"peso boliviano"));
 
 
 const carrito = [];
@@ -192,33 +192,53 @@ let ultima = document.getElementById("last");
 
 function ultimaMoneda(){
   let miMoneda=localStorage.getItem("moneda");
-  const jsonAObjeto = JSON.parse(miMoneda);
-  ultima.innerHTML=jsonAObjeto.nombre;
+  if(miMoneda == null){
+    console.log("No hay nada en el storage");
+    localStorage.setItem("moneda",JSON.stringify(listamonedas[0]))
+  }
+  else{
+    const jsonAObjeto = JSON.parse(miMoneda);
+    ultima.innerHTML=jsonAObjeto.nombre;
+  }
+  
 }
 ultimaMoneda();
 
 //-----------FUNCION CONVERTIDORA------------------------------------//
 
 
-let local = document.getElementById("numselec").value;
+
 
 
 function ConvertiraDolar(){
-  
+  let local = document.getElementById("numselec").value;
   let miMoneda=localStorage.getItem("moneda");
   const jsonAObjeto = JSON.parse(miMoneda);
-  let result = local / parseInt(jsonAObjeto.cotizadolar);
+  let result = local / parseInt(jsonAObjeto.cotizadolar).toFixed(2);
 
   let p1 = document.getElementById("filtro");
   let p2 = document.getElementById("resultado");
   
   
 
-  alert(result);
-  console.log(local);
+  if(local <=0){
+    p1.innerText="Debe ser mayor que 0 para convertir";
+    p1.style.color="red";
+    local.innerHTML="";
+    p2.innerHTML="";
+    
+  }
+  else{
+    p2.innerText="Su conversión da: "+result+" U$$";
+    p1.innerHTML="";
+    local.innerHTML="";
+  } 
+  console.log(result);
  
 
 }
+ConvertiraDolar();
+
 
 
 
