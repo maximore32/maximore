@@ -106,7 +106,7 @@ listamonedas[1].ConvertiraDolar();*/
 
 //---------------------------------------TERCERA ENTREGA-------------------------------------------//
 const carrito = [];
-const allMonedas=[];
+const extraerMoneda=[];
 let contenedor = document.getElementById("art");
 
 
@@ -119,27 +119,24 @@ function mostrarMonedas(){
           contenedor.innerHTML += `
             
           <div class="card-body">
-              <h1 class="card-text">${moneda.id}</h1>
               <h2 class="card-text">${moneda.moneda.toUpperCase()}</h2>
               <p class="card-text">$${moneda.cotizacion}</p>
               <p class="card-text">${moneda.descripcion}</p>
               <button id="btn${moneda.id}" class="btn btn-primary">Seleccionar</button>
           </div> `;
-                    console.log(moneda.id);
-                    
+                             
         }
         
-        
-        allMonedas.push(monedas);
-        console.log(allMonedas );
-                
-
-  })    
-  allMonedas.forEach(money => {
-          document.getElementById(`btn${money.id}`).addEventListener("click",function(){
-          agregarAlCarrito(money);
+        extraerMoneda.push(monedas);
+        monedas.forEach(moneda => {
+          document.getElementById(`btn${moneda.id}`).addEventListener("click",function(){
+          agregarAlCarrito(moneda);
         });
     })
+               
+
+  })    
+  
        
 }
 
@@ -147,9 +144,9 @@ mostrarMonedas();
 
 function agregarAlCarrito(monedaElegida){
     carrito.push(monedaElegida);   
-    alert("Moneda Seleccionada: "+monedaElegida.moneda+" para convertir a U$$");
+    alert("Moneda Seleccionada: "+monedaElegida.moneda.toUpperCase()+" para convertir a U$$");
     document.getElementById("monelegida").innerText = `
-       Moneda seleccionada:${monedaElegida.moneda}        
+       Moneda seleccionada:${monedaElegida.moneda.toUpperCase()}        
     `;
     const monedaAJson = JSON.stringify(monedaElegida);
     localStorage.setItem("moneda",monedaAJson);
@@ -163,7 +160,7 @@ function agregarAlCarrito(monedaElegida){
 let contenedor2 = document.getElementById("art2");
 
 function monedasDevaluadas(){
-  allMonedas.filter((ruins)=> ruins.cotizacion >100).map((ruins)=>{
+  extraerMoneda.filter((ruins)=> ruins.cotizacion >100).map((ruins)=>{
     contenedor2.innerHTML+=`
             
     <div class="card-body">
@@ -173,6 +170,7 @@ function monedasDevaluadas(){
         <p class="card-text">${ruins.descripcion}</p>        
     </div>`;
   })
+  console.log(extraerMoneda)
 
 }
 monedasDevaluadas()
@@ -184,11 +182,11 @@ function ultimaMoneda(){
   let miMoneda=localStorage.getItem("moneda");
   if(miMoneda == null){
     console.log("No hay nada en el storage");
-    localStorage.setItem("moneda",JSON.stringify(allMonedas[0]))
+    localStorage.setItem("moneda",JSON.stringify(extraerMoneda[0]))
   }
   else{
     const jsonAObjeto = JSON.parse(miMoneda);
-    ultima.innerHTML=jsonAObjeto.nombre;
+    ultima.innerHTML=jsonAObjeto.moneda;
   }
   
 }
