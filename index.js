@@ -214,24 +214,23 @@ function ConvertiraDolar(){
   let p2 = document.getElementById("resultado");
   
   
-
-  if(local <=0){
-    p1.innerHTML=`<div class="alert alert-danger" role="alert">
-    Debe ser mayor que 0 para convertir!
-  </div>`    
-  }
-  else if(isNaN(local) == true){
-    p1.innerText="Debe colocar un Número";
-    p1.style.color="red";
-    
-
-  }
-  else{
-    p1.innerHTML=`<div class="alert alert-primary" role="alert">
-    Su conversión da: ${result.toFixed(2)} U$$!
-  </div>`   
-    
-  }
+    if(local <=0){
+      p1.innerHTML=`<div class="alert alert-danger" role="alert">
+      Debe ser mayor que 0 para convertir!
+    </div>`    
+    }
+    else if(isNaN(local) == true){
+      p1.innerText="Debe colocar un Número";
+      p1.style.color="red";
+      
+  
+    }
+    else{
+      p2.innerHTML=`<div class="alert alert-primary" role="alert">
+      Su conversión da: ${result.toFixed(2)} U$$!
+    </div>`   
+      
+    }
   
   console.log(result);
 }
