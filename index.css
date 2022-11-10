@@ -195,3 +195,13 @@ form label{
         width: 48%;
     }
 }
+.swal-title{
+    background-color: darkred;
+    color: whitesmoke;
+    font-family:'Rubik Maze';
+}
+.swal-text{
+    color: indigo;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+}

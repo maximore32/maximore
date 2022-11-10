@@ -143,7 +143,7 @@ mostrarMonedas();
 
 function agregarAlCarrito(monedaElegida){
     carrito.push(monedaElegida);   
-    swal("Moneda Seleccionada: "+monedaElegida.moneda.toUpperCase()+" para convertir a U$$");
+    swal("CONVERT2000","Moneda Seleccionada: "+monedaElegida.moneda.toUpperCase()+" para convertir a U$$");
     document.getElementById("monelegida").innerText = `
        Moneda seleccionada: ${monedaElegida.moneda.toUpperCase()}        
     `;
