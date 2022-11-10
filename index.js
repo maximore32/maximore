@@ -106,7 +106,6 @@ listamonedas[1].ConvertiraDolar();*/
 
 //---------------------------------------TERCERA ENTREGA-------------------------------------------//
 const carrito = [];
-const extraerMoneda=[];
 let contenedor = document.getElementById("art");
 
 
@@ -127,15 +126,15 @@ function mostrarMonedas(){
                              
         }
         
-        extraerMoneda.push(monedas);
+        
         monedas.forEach(moneda => {
           document.getElementById(`btn${moneda.id}`).addEventListener("click",function(){
           agregarAlCarrito(moneda);
         });
-    })
-               
+    })             
 
-  })    
+  })
+    
   
        
 }
@@ -144,9 +143,9 @@ mostrarMonedas();
 
 function agregarAlCarrito(monedaElegida){
     carrito.push(monedaElegida);   
-    alert("Moneda Seleccionada: "+monedaElegida.moneda.toUpperCase()+" para convertir a U$$");
+    swal("Moneda Seleccionada: "+monedaElegida.moneda.toUpperCase()+" para convertir a U$$");
     document.getElementById("monelegida").innerText = `
-       Moneda seleccionada:${monedaElegida.moneda.toUpperCase()}        
+       Moneda seleccionada: ${monedaElegida.moneda.toUpperCase()}        
     `;
     const monedaAJson = JSON.stringify(monedaElegida);
     localStorage.setItem("moneda",monedaAJson);
@@ -160,17 +159,23 @@ function agregarAlCarrito(monedaElegida){
 let contenedor2 = document.getElementById("art2");
 
 function monedasDevaluadas(){
-  extraerMoneda.filter((ruins)=> ruins.cotizacion >100).map((ruins)=>{
-    contenedor2.innerHTML+=`
+  const URLJSON="https://raw.githubusercontent.com/maximore32/monedas/master/monedas.json";  
+   fetch(URLJSON)
+    .then(resp => resp.json())
+    .then(monedas => {
+      monedas.filter((ruins)=> ruins.cotizacion >100).map((ruins)=>{
+        contenedor2.innerHTML+=`
+                
+        <div class="card-body">
             
-    <div class="card-body">
-        
-        <h2 class="card-text">${ruins.moneda}</h2>
-        <p class="card-text">${ruins.cotizacion}</p>
-        <p class="card-text">${ruins.descripcion}</p>        
-    </div>`;
+            <h2 class="card-text">${ruins.moneda.toUpperCase()}</h2>
+            <p class="card-text">$${ruins.cotizacion}</p>
+            <p class="card-text">${ruins.descripcion}</p>        
+        </div>`;
+      })
+                  
+
   })
-  console.log(extraerMoneda)
 
 }
 monedasDevaluadas()
@@ -186,7 +191,7 @@ function ultimaMoneda(){
   }
   else{
     const jsonAObjeto = JSON.parse(miMoneda);
-    ultima.innerHTML=jsonAObjeto.moneda;
+    ultima.innerHTML=jsonAObjeto.moneda.toUpperCase();
   }
   
 }
@@ -203,6 +208,7 @@ function ConvertiraDolar(){
   let miMoneda=localStorage.getItem("moneda");
   const jsonAObjeto = JSON.parse(miMoneda);
   let result = local / parseFloat(jsonAObjeto.cotizacion).toFixed(2);
+  
 
   let p1 = document.getElementById("filtro");
   let p2 = document.getElementById("resultado");
@@ -210,25 +216,36 @@ function ConvertiraDolar(){
   
 
   if(local <=0){
-    p1.innerText="Debe ser mayor que 0 para convertir";
-    p1.style.color="red";
-    local.innerHTML="";
-    p2.innerHTML="";
-    
+    p1.innerHTML=`<div class="alert alert-danger" role="alert">
+    Debe ser mayor que 0 para convertir!
+  </div>`    
   }
   else if(isNaN(local) == true){
     p1.innerText="Debe colocar un Número";
     p1.style.color="red";
-    local.innerHTML="";
-    p2.innerHTML="";
+    
 
   }
   else{
-    p2.innerText="Su conversión da: "+result+" U$$";
-    p1.innerHTML="";
-    local.innerHTML="";
-  } 
+    p1.innerHTML=`<div class="alert alert-primary" role="alert">
+    Su conversión da: ${result.toFixed(2)} U$$!
+  </div>`   
+    
+  }
+  
   console.log(result);
+}
+
+function LimpiarCampo(){
+  let form = document.getElementById("form")
+  let p1 = document.getElementById("filtro");
+  let p2 = document.getElementById("resultado");
+  if( p1 && p2 != null){
+    p1.innerHTML="";
+    p2.innerHTML="";
+    
+  }
+  form.reset()
 }
 
 

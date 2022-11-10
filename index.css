@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Maze&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 body{
     margin: 0;
     padding: 0;
@@ -10,15 +14,49 @@ header{
     width: 100%;
     background-color: darkred;
     float: left;
-    text-align: center;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
 }
-header label{
-    font-size: 60px;
-    margin-left: 5px;
+header div {
+    width: 30%;
+    margin: 5px;
     padding: 5px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: lightblue;
 }
+
+header div label a{
+    font-size: 50px;
+    color: lemonchiffon;
+    font-family: 'Monoton';
+    text-decoration: none;
+}
+
+nav{
+    width: 100%;
+}
+
+nav ul{
+    display: flex;
+    justify-content:space-around;
+    
+   
+}
+
+nav ul li{
+    list-style: none;
+    margin: 5px;
+    font-size: 20px;
+    color: lightcyan;
+}
+ul li a{
+    
+    text-decoration: none;
+    color: lightcyan;
+}
+.dropdown{
+    display: none;
+}
+
 main{
     text-align: center;
     width: 100%;
@@ -26,11 +64,19 @@ main{
     float: left;
     margin: 0 auto;
 }
+
+#titulo{
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    padding: 5px;
+}
 h1{
-    color: darkcyan;
+    color: rgb(114, 5, 5);
     font-size: 35px;
     margin-top:10px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Rubik Maze';
+    
 }
 footer{
     width: 100%;
@@ -46,10 +92,10 @@ footer{
 }
 
 .card-body{
-    width: 30%;
+    width: 33%;
     border: double 5px darkred;
     float: left;
-    margin: 10px;
+    margin: 2px;
     padding: 5px;
 }
 
@@ -57,19 +103,95 @@ form{
     width: 50%;
     margin: 0 auto;    
     text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
     
     }
-input{
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 7px;
-}
+
 form label{
-    font-size: 25px;
-    color: rgb(61, 70, 233);
-    font-family: 'Times New Roman', Times, serif;
-    margin-bottom: 3px;
+    font-size: 30px;
+    color: darkred;
+    font-family: 'Lilita One';
+    margin-bottom: 10px;
 }
 #last{
     color: darkred;
+}
+.tituloseccion{
+    margin-top: 5px;
+    font-family: "Permanent Marker";
+    color: darkred;
+}
+.card-text > p{
+    font-family: 'Times New Roman', Times, serif;
+    color: darkblue;
+    font-size: 15px;
+} 
+
+
+/*------------------MEDIA-QUERYS-------------------------*/
+@media(max-width: 858px){
+    header div{
+        width: 50%;
+    }
+    nav{
+        width: 40%;
+        display: flex;
+        justify-content: end;
+    }
+    nav ul{
+        display: none;
+    }
+    #menuitem{
+        display: block;
+        margin-right: 20px;
+        font-size: 20px;
+        width: 10%;
+        color: bisque;
+    }
+
+    .dropdown-menu a{
+        color: brown;
+    }
+
+    .dropdown  i{
+        color:bisque;
+    }
+
+    #drop{
+        display: block;
+        width: 40%;
+    }
+
+    header div label a{
+        font-size: 31px;
+    }
+
+    h1{
+        font-size: 25px;
+
+    }
+   
+    p{
+        font-size: 15px;
+    }
+
+    footer small{
+        font-size: 15px;
+    }
+    #titulo{
+        width: 100%;
+        padding: 0;
+    }   
+
+    form label{
+        font-size: 20px;
+    }
+    form{
+        width: 100%;
+        margin-top: 30px;
+    }
+    .card-body{
+        width: 48%;
+    }
 }
